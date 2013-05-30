@@ -83,9 +83,7 @@ public class UsersTable extends Table<User> {
 		try {
 			String result = CustomHttpClient.executeHttpPost(sUrl, params);
 
-			System.out.println(result);
-
-			return 1;
+			return Integer.parseInt(result.trim());
 		} catch (Exception e) {
 			e.printStackTrace();
 

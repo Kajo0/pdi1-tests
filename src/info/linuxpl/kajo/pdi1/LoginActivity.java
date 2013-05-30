@@ -1,6 +1,7 @@
 package info.linuxpl.kajo.pdi1;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import info.linuxpl.kajo.pdi1.db.remote.beans.User;
 import info.linuxpl.kajo.pdi1.db.remote.tables.UsersTable;
@@ -95,12 +96,47 @@ public class LoginActivity extends Activity {
 						new LoginTask().execute(sql);
 					}
 				});
+
+		((Button) findViewById(R.id.registration_button))
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+
+						EditText l = ((EditText) findViewById(R.id.login));
+						EditText p = ((EditText) findViewById(R.id.password));
+						EditText e = ((EditText) findViewById(R.id.email));
+
+						String login = l.getText().toString();
+						String passwd = p.getText().toString();
+						String email = e.getText().toString();
+
+						if (login.length() == 0)
+							l.setBackgroundColor(Color.RED);
+						else
+							l.setBackgroundColor(Color.TRANSPARENT);
+						if (passwd.length() == 0)
+							p.setBackgroundColor(Color.RED);
+						else
+							p.setBackgroundColor(Color.TRANSPARENT);
+						if (email.length() == 0)
+							e.setBackgroundColor(Color.RED);
+						else
+							e.setBackgroundColor(Color.TRANSPARENT);
+
+						if (login.length() == 0 || passwd.length() == 0
+								|| email.length() == 0)
+							return;
+
+						new RegisterTask().execute(login, passwd, email);
+					}
+				});
 	}
 
 	private class LoginTask extends AsyncTask<String, Void, Integer> {
 
 		ProgressDialog dialog = ProgressDialog.show(LoginActivity.this, "",
-				"Loading, Please wait...");
+				"Checking, Please wait...");
 
 		@Override
 		protected Integer doInBackground(String... params) {
@@ -125,6 +161,45 @@ public class LoginActivity extends Activity {
 			if (result == 0) {
 				((TextView) findViewById(R.id.scroll_text))
 						.setText("Wrong sth!");
+
+				((TextView) findViewById(R.id.scroll_text))
+						.setTextColor(Color.RED);
+			} else {
+				moveOn();
+			}
+		}
+
+	}
+
+	private class RegisterTask extends AsyncTask<String, Void, Integer> {
+
+		ProgressDialog dialog = ProgressDialog.show(LoginActivity.this, "",
+				"Registering, Please wait...");
+
+		@Override
+		protected Integer doInBackground(String... params) {
+			User u = new User(0, params[0], params[1], params[2],
+					new Date().getTime());
+
+			int r = new UsersTable().insert(u);
+
+			if (r > 0)
+				updateUserInfo(u);
+
+			return r;
+		}
+
+		protected void onPreExecute() {
+			dialog.show();
+		}
+
+		protected void onPostExecute(Integer result) {
+			if (dialog != null)
+				dialog.dismiss();
+
+			if (result == -1 || result == 0) {
+				((TextView) findViewById(R.id.scroll_text))
+						.setText("Sth duplicated! (error codes in the future maybe tell us what was it)");
 
 				((TextView) findViewById(R.id.scroll_text))
 						.setTextColor(Color.RED);

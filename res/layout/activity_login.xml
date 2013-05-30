@@ -47,17 +47,41 @@
     </LinearLayout>
 
     <CheckBox
-        android:layout_below="@id/ll"
         android:id="@+id/auto_login_checkbox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/ll"
         android:text="@string/auto_login" />
+
+    <LinearLayout
+        android:id="@+id/llr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/auto_login_checkbox" >
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:singleLine="true" >
+        </EditText>
+
+        <Button
+            android:id="@+id/registration_button"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/register" />
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/s_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/auto_login_checkbox" >
+        android:layout_below="@id/llr" >
 
         <TextView
             android:id="@+id/scroll_text"

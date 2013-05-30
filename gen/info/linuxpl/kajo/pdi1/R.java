@@ -25,17 +25,20 @@ public final class R {
     }
     public static final class id {
         public static final int auto_login_checkbox=0x7f080005;
-        public static final int deactivate_auto_login=0x7f08000c;
-        public static final int email_label=0x7f080009;
-        public static final int inactive_button=0x7f08000b;
+        public static final int deactivate_auto_login=0x7f08000f;
+        public static final int email=0x7f080007;
+        public static final int email_label=0x7f08000c;
+        public static final int inactive_button=0x7f08000e;
         public static final int ll=0x7f080001;
+        public static final int llr=0x7f080006;
         public static final int login=0x7f080002;
         public static final int login_button=0x7f080004;
-        public static final int login_label=0x7f080008;
+        public static final int login_label=0x7f08000b;
         public static final int password=0x7f080003;
-        public static final int recognize_button=0x7f08000a;
-        public static final int s_view=0x7f080006;
-        public static final int scroll_text=0x7f080007;
+        public static final int recognize_button=0x7f08000d;
+        public static final int registration_button=0x7f080008;
+        public static final int s_view=0x7f080009;
+        public static final int scroll_text=0x7f08000a;
         public static final int title=0x7f080000;
     }
     public static final class layout {
@@ -47,16 +50,18 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f050000;
-        public static final int auto_login=0x7f050004;
-        public static final int deactivate_auto_login=0x7f050005;
-        public static final int inactive_button=0x7f050008;
-        public static final int inactive_label=0x7f050007;
+        public static final int auto_login=0x7f050005;
+        public static final int deactivate_auto_login=0x7f050006;
+        public static final int email=0x7f050004;
+        public static final int inactive_button=0x7f050009;
+        public static final int inactive_label=0x7f050008;
         public static final int login=0x7f050002;
         public static final int login_title=0x7f050001;
         public static final int password=0x7f050003;
-        public static final int recognize_button=0x7f05000a;
-        public static final int recognize_label=0x7f050009;
-        public static final int title_activity_main=0x7f050006;
+        public static final int recognize_button=0x7f05000b;
+        public static final int recognize_label=0x7f05000a;
+        public static final int register=0x7f05000c;
+        public static final int title_activity_main=0x7f050007;
     }
     public static final class style {
         /** 

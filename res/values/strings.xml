@@ -5,6 +5,7 @@
     <string name="login_title">Hello, please log in!</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
+    <string name="email">E-mail</string>
     <string name="auto_login">Auto log in</string>
     <string name="deactivate_auto_login">Deactivate auto login</string>
     <string name="title_activity_main">MainActivity activity</string>
@@ -12,5 +13,6 @@
     <string name="inactive_button">Try me xD</string>
     <string name="recognize_label">Recognitor -></string>
     <string name="recognize_button">Action!</string>
+    <string name="register">Register\'nlog</string>
 
 </resources>
