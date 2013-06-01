@@ -1,7 +1,10 @@
 package info.linuxpl.kajo.pdi1;
 
+import com.qualcomm.QCARSamples.Dominoes.Dominoes;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.Menu;
@@ -68,9 +71,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.recognize_button:
-			// Intent myIntent = new Intent(this,
-			// RecognizeActivity.class);
-			// startActivity(myIntent);
+			 Intent myIntent = new Intent(this, Dominoes.class);
+			 startActivity(myIntent);
 			break;
 		}
 

@@ -1,3 +1,5 @@
 /libs/android-support-v4.jar
 /libs/mysql-connector-java-5.1.25-bin.jar
 /bin
+/obj
+/libs

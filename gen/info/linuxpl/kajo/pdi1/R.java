@@ -22,10 +22,12 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int splash_screen_dominoes=0x7f020001;
     }
     public static final class id {
         public static final int auto_login_checkbox=0x7f080005;
-        public static final int deactivate_auto_login=0x7f08000f;
+        public static final int deactivate_auto_login=0x7f080010;
+        public static final int delete_button=0x7f08000f;
         public static final int email=0x7f080007;
         public static final int email_label=0x7f08000c;
         public static final int inactive_button=0x7f08000e;
@@ -44,6 +46,7 @@ public final class R {
     public static final class layout {
         public static final int activity_login=0x7f030000;
         public static final int activity_main=0x7f030001;
+        public static final int interface_overlay=0x7f030002;
     }
     public static final class menu {
         public static final int main=0x7f070000;
