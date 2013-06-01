@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements OnClickListener {
 
 	public static String USER_PREFERENCES = "user_preferences";
 
@@ -29,19 +29,11 @@ public class MainActivity extends Activity {
 		lt.setText(preferences.getString("login", "Anonymous"));
 		et.setText(preferences.getString("email", "em@a.il"));
 
-		((Button) findViewById(R.id.recognize_button))
-				.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-
-					}
-				});
+		((Button) findViewById(R.id.recognize_button)).setOnClickListener(this);
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 
 		return true;
@@ -70,6 +62,18 @@ public class MainActivity extends Activity {
 	@Override
 	public void onBackPressed() {
 		finish();
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.recognize_button:
+			// Intent myIntent = new Intent(this,
+			// RecognizeActivity.class);
+			// startActivity(myIntent);
+			break;
+		}
+
 	}
 
 }
