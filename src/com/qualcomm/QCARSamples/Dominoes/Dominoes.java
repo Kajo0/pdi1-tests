@@ -73,7 +73,7 @@ public class Dominoes extends Activity
     private Runnable mSplashScreenRunnable;
 
     // The minimum time the splash screen should be visible:
-    private static final long MIN_SPLASH_SCREEN_TIME = 2000;
+    private static final long MIN_SPLASH_SCREEN_TIME = 1000;
 
     // The time when the splash screen has become visible:
     long mSplashScreenStartTime = 0;

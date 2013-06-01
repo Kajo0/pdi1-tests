@@ -62,6 +62,7 @@ bool isActivityInPortraitMode   = false;
 static const float kObjectScale = 3.f;
 
 QCAR::DataSet* dataSet          = 0;
+QCAR::DataSet* dataSetStonesAndChips = 0;
 
 
 JNIEXPORT void JNICALL
@@ -126,8 +127,8 @@ Java_com_qualcomm_QCARSamples_Dominoes_Dominoes_loadTrackerData(JNIEnv *, jobjec
     }
     
     // Load the data set:
-    //if (!dataSet->load("Stones.xml", QCAR::DataSet::STORAGE_APPRESOURCE))
-    if (!dataSet->load("StonesAndChips.xml", QCAR::DataSet::STORAGE_APPRESOURCE))
+//    if (!dataSet->load("StonesAndChips.xml", QCAR::DataSet::STORAGE_APPRESOURCE))
+    if (!dataSet->load("PDI1.xml", QCAR::DataSet::STORAGE_APPRESOURCE))
     {
         LOG("Failed to load data set.");
         return 0;
@@ -140,6 +141,28 @@ Java_com_qualcomm_QCARSamples_Dominoes_Dominoes_loadTrackerData(JNIEnv *, jobjec
         return 0;
     }
     
+    // Create the data set:
+    dataSetStonesAndChips = imageTracker->createDataSet();
+    if (dataSetStonesAndChips == 0)
+    {
+        LOG("Failed to create a new tracking data.");
+        return 0;
+    }
+
+    // Load the data set:
+    if (!dataSetStonesAndChips->load("StonesAndChips.xml", QCAR::DataSet::STORAGE_APPRESOURCE))
+    {
+        LOG("Failed to load data set.");
+        return 0;
+    }
+
+    // Activate the data set:
+    if (!imageTracker->activateDataSet(dataSetStonesAndChips))
+    {
+        LOG("Failed to activate data set.");
+        return 0;
+    }
+
     LOG("Successfully loaded and activated data set.");
     return 1;
 }
@@ -178,6 +201,26 @@ Java_com_qualcomm_QCARSamples_Dominoes_Dominoes_destroyTrackerData(JNIEnv *, job
         
         LOG("Successfully destroyed the data set.");
         dataSet = 0;
+        return 1;
+    }
+
+    if (dataSetStonesAndChips != 0)
+    {
+        if (!imageTracker->deactivateDataSet(dataSetStonesAndChips))
+        {
+            LOG("Failed to destroy the tracking data set because the data set "
+                "could not be deactivated.");
+            return 0;
+        }
+
+        if (!imageTracker->destroyDataSet(dataSetStonesAndChips))
+        {
+            LOG("Failed to destroy the tracking data set.");
+            return 0;
+        }
+
+        LOG("Successfully destroyed the data set.");
+        dataSetStonesAndChips = 0;
         return 1;
     }
     
